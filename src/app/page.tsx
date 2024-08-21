@@ -2,7 +2,7 @@ import Image from "next/image";
 import { inherits } from "util";
 import Link from "next/link";
 import Parallax from "./components/Parallax";
-import Trashcan from "./components/trashcan";
+import Trashcan from "./components/Trashcan";
 
 
 export default function Home() {
