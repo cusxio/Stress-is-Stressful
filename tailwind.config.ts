@@ -1,5 +1,6 @@
 import type { Config } from "tailwindcss";
 
+
 const config: Config = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -7,14 +8,27 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    cursor: {
+      
+    },
     extend: {
+      
+      dropShadow: {
+        '3xl': [
+          '5px 0px 0px rgba(32, 60, 87, 1)',
+          '-5px 0px 0px rgba(32, 60, 87, 1)',
+          '0px -5px 0px rgba(32, 60, 87, 1)',
+          '0px 5px 0px rgba(32, 60, 87, 1)'
+        ]
+      },
+
       colors: {
         oren: {
           600: "AA5D36",
           4: '#D08159',
-          3: '#FFAA5D',
+          3: '#FFAA5E',
           2: '#FFD4A3',
-          1: '#FFECD5'
+          1: '#FFECD6'
         },
         'dark-blue': '#0D2B45',
         'light-blue': '#213C56'

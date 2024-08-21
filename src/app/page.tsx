@@ -8,17 +8,18 @@ export default function Home() {
 
   return (
     
-    <main className= "bg-gradient-to-br from-dark-blue to-light-blue">
-    <Parallax />         
+    <main className= "bg-dark-blue">
+      <Parallax />         
 
-      <div className="min-h-screen text-white font-sans m-10">
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam nemo laudantium error iste tenetur temporibus expedita quae, labore omnis adipisci, provident modi vitae quisquam maiores laboriosam, corporis quasi reprehenderit. Corporis!
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam aperiam obcaecati numquam accusamus magnam excepturi ex, totam quia? Reprehenderit dignissimos repellat minus blanditiis, aliquam id nemo saepe a. Amet, eligendi?
-          Fugit ea eveniet necessitatibus blanditiis, laborum a, dignissimos distinctio quas beatae soluta odit similique? Iste quis odio ipsam aliquid nostrum. Laudantium rerum expedita sed, voluptates praesentium eaque amet optio qui?
-          Qui, quasi repudiandae! Accusantium suscipit reiciendis error maxime dolore voluptatum. Deserunt tempore accusamus quis hic ipsam laudantium quasi quos blanditiis. Asperiores laboriosam iure sed dolor libero maxime quibusdam praesentium impedit.
-          Corrupti reprehenderit accusamus commodi id in sapiente! Ad qui molestias sed reiciendis, quaerat enim aliquid repellat minima facere, exercitationem nemo quis neque consequatur suscipit voluptates odio ut. Voluptatum, impedit ab?
-          Eveniet quia mollitia sed fugiat, cupiditate magnam repellat fuga quibusdam iusto rerum adipisci dignissimos labore veritatis nulla tenetur debitis, quos officiis provident tempore earum animi amet aliquam pariatur. Ad, possimus?
+      <div className="min-h-screen -mt-10">
+        <p className="m-[20%] text-oren-4 font-montserrat text-base ">
+        Have you ever done something bad or really stupid? Like, you know, stealing money from your granny as a child or laughing at an odd-looking homeless person?
+        <br/><br/>
+        Do you still remember the day when you failed the interview for your dream job or the night when you were too shy to tell her that you loved her? Maybe you hate yourself for some of your thoughts or feelings?
+        <br/><br/>
+        It’s time to get rid of shame and start a guilt-free life! Let us save your sanity with the ancient technique of ‘Indulgence’, which first appeared in Europe more than 1,000 years ago. 
+        <br/><br/>
+        Now go scroll for redemption!
         </p>
       </div>
 
