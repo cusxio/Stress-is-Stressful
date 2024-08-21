@@ -13,14 +13,16 @@ export default function Loading() {
             <Image
               src="/truck.gif"
               width={400}
-              height={20} alt={""}
-              className=""
+              height={20} 
+              alt={"truck"}
               />
           </div>
+
           <h3 className="text-xl text-orange-200">we're tossing the stress out for you...</h3>
-            </div>
-      
+          
           </div>
+      
+      </div>
     </main>
   );
 }
