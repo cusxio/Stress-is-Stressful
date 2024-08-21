@@ -57,7 +57,7 @@ function Parallax() {
             tl.to(
                 mountain1.current,
                 {
-                    y: "-=100",
+                    y: "-=50",
                 },
                 0
             );
@@ -129,16 +129,16 @@ function Parallax() {
     return (
         <div className="overflow-hidden relative bg-oren-4">
             <div className='w-max h-screen overflow-hidden'>
-                <Image ref={mountain3} className='w-full absolute z-10' src="/sunset/mountain-3.png" alt={"mountain3"}/>
-                <Image ref={mountain2} className='w-full absolute z-20' src="/sunset/mountain-2.png" alt={"mountain2"}/>
-                <Image ref={mountain1} className='w-full absolute z-30' src="/sunset/mountain-1.png" alt={"mountain1"}/>
-                <Image ref={sun} className='w-3/12 absolute left-1/2 top-72 z-0' src="/sunset/sun.png" alt={"sun"}/>
-                <Image ref={cloud1} className='absolute w-60 left-64 top-6 z-0' src="/sunset/cloud-1.png" alt={"cloud1"} />
-                <Image ref={cloud2} className='absolute w-60 right-80 top-10 z-0' src="/sunset/cloud-2.png" alt={"cloud2"} />
-                <Image ref={cloud3} className='absolute w-60 right-6 top-28 z-0' src="/sunset/cloud-3.png" alt={"cloud3"}/>
-                <Image ref={cloud4} className='absolute w-60 left-96 top-32 z-0' src="/sunset/cloud-4.png" alt={"cloud4"}/>
-                <Image ref={cloud5} className='absolute w-36 left-52 top-64 z-0' src="/sunset/cloud-5.png" alt={"clound5"}/>
-                <Image ref={cloud6} className='absolute w-60 top-20' src="/sunset/cloud-6.png" alt={"cloud6"} />
+                <Image ref={mountain3} className='absolute z-10' src="/sunset/mountain-3.png" alt={"mountain3"} layout="fill"/>
+                <Image ref={mountain2} className='absolute z-20' src="/sunset/mountain-2.png" alt={"mountain2"} layout="fill"/>
+                <Image ref={mountain1} className='absolute z-30' src="/sunset/mountain-1.png" alt={"mountain1"} layout="fill"/>
+                <Image ref={sun} className='w-3/12 absolute left-1/2 top-72 z-0' src="/sunset/sun.png" alt={"sun"} width={25} height={0}/>
+                <Image ref={cloud1} className='absolute w-60 left-64 top-6 z-0' src="/sunset/cloud-1.png" alt={"cloud1"} width={60} height={0}/>
+                <Image ref={cloud2} className='absolute w-60 right-80 top-10 z-0' src="/sunset/cloud-2.png" alt={"cloud2"} width={60} height={0}/>
+                <Image ref={cloud3} className='absolute w-60 right-6 top-28 z-0' src="/sunset/cloud-3.png" alt={"cloud3"} width={60} height={0}/>
+                <Image ref={cloud4} className='absolute w-60 left-96 top-32 z-0' src="/sunset/cloud-4.png" alt={"cloud4"} width={60} height={0}/>
+                <Image ref={cloud5} className='absolute w-36 left-52 top-64 z-0' src="/sunset/cloud-5.png" alt={"clound5"} width={36} height={0}/>
+                <Image ref={cloud6} className='absolute w-60 top-20' src="/sunset/cloud-6.png" alt={"cloud6"} width={60} height={0}/>
                 <div ref={copy} className="absolute flex-col left-1/2 bottom-1/4 z-10 items-center justify-center -translate-x-1/2 -translate-y-1/2">
                     <h1 className="font-pressstart2p bg-gradient-to-b from-orange-200 to-orange-600 inline-block text-transparent bg-clip-text decoration-solid decoration-20 text-8xl text-stroke z-10 drop-shadow-3xl">STRESS IS</h1>
                     <h1 className="mt-2 font-pressstart2p bg-gradient-to-b from-orange-200 to-orange-600 inline-block text-transparent bg-clip-text decoration-solid decoration-20 text-8xl text-stroke z-10 drop-shadow-3xl">STRESSFUL</h1>

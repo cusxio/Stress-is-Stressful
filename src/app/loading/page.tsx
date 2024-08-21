@@ -18,7 +18,7 @@ export default function Loading() {
               />
           </div>
 
-          <h3 className="text-xl text-orange-200">we're tossing the stress out for you...</h3>
+          <h3 className="text-xl text-orange-200">we&apos;re tossing the stress out for you...</h3>
           
           </div>
       
