@@ -134,36 +134,35 @@ function Trashcan() {
     }, [router]); // Adding router to the dependency array
 
     return (
-        <div style={{ position: 'relative', width: '100%', height: '100vh' }}>
-            {/* Trash (Draggable Item) */}
-            {!isDropped && (
-                <div
+
+        <div className='flex pl-[10%] pr-[10%]'>
+            <div className="content-center w-1/2">
+            <h1 className="font-pressstart2p bg-gradient-to-b from-oren-1 to-oren-3 inline-block text-transparent bg-clip-text decoration-solid decoration-20 text-md xl:text-5xl text-stroke z-10 drop-shadow-3xlo text-left">ARE YOU READY TO</h1>
+            <h1 className="font-pressstart2p bg-gradient-to-b from-oren-1 to-oren-3 inline-block text-transparent bg-clip-text decoration-solid decoration-20 text-md xl:text-5xl text-stroke z-10 drop-shadow-3xlo text-left">TOSS YOUR STRESS AWAY?</h1>
+            </div>
+
+            <div className="relative w-full h-screen"> {/* Container for the trash and bin */}
+                {/* Trash (Draggable Item) */}
+                {!isDropped && (
+                    <div
                     ref={trashRef}
                     style={{
-                        position: 'absolute',
                         top: `${position.top}px`,
                         left: `${position.left}px`,
-                        cursor: 'grab',
-                        width: '100px',
-                        height: '100px',
                     }}
-                >
-                    <Image className="w-100 h-100" src={paper} alt="paper" />
-                </div>
-            )}
+                    className="absolute cursor-grab w-24 h-24"
+                    >
+                        <Image className="w-full h-full" src={paper} alt="paper" />
+                    </div>
+                )}
 
-            {/* Bin (Drop Zone) */}
-            <div
-                ref={binRef}
-                style={{
-                    position: 'absolute',
-                    bottom: '50px',
-                    right: '50px',
-                    width: '100px',
-                    height: '100px',
-                }}
-            >
-                <Image className="w-100 h-100" src={bin} alt="bin" />
+                {/* Bin (Drop Zone) */}
+                <div
+                    ref={binRef}
+                    className="absolute bottom-12 right-12 w-24 h-24"
+                    >
+                    <Image className="w-full h-full" src={bin} alt="bin" />
+                </div>
             </div>
         </div>
     );
