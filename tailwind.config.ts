@@ -8,23 +8,58 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    
+
     cursor: {
       
     },
     extend: {
-      
+      screens: {
+        'mb':'320px'
+      },
+
       dropShadow: {
-        '3xl': [
+        '3xlb': [
+          '3px 0px 0px rgba(32, 60, 87, 1)',
+          '-3px 0px 0px rgba(32, 60, 87, 1)',
+          '0px -3px 0px rgba(32, 60, 87, 1)',
+          '0px 3px 0px rgba(32, 60, 87, 1)'
+        ],
+        '4xlb': [
           '5px 0px 0px rgba(32, 60, 87, 1)',
           '-5px 0px 0px rgba(32, 60, 87, 1)',
           '0px -5px 0px rgba(32, 60, 87, 1)',
           '0px 5px 0px rgba(32, 60, 87, 1)'
+        ],
+        '5xlb': [
+          '8px 0px 0px rgba(32, 60, 87, 1)',
+          '-8px 0px 0px rgba(32, 60, 87, 1)',
+          '0px -8px 0px rgba(32, 60, 87, 1)',
+          '0px 8px 0px rgba(32, 60, 87, 1)'
+        ],
+        '3xlo': [
+          '3px 0px 0px rgba(170, 93, 54, 1)',
+          '-3px 0px 0px rgba(170, 93, 54, 1)',
+          '0px -3px 0px rgba(170, 93, 54, 1)',
+          '0px 3px 0px rgba(170, 93, 54, 1)'
+        ],
+        '4xlo': [
+          '5px 0px 0px rgba(170, 93, 54, 1)',
+          '-5px 0px 0px rgba(170, 93, 54, 1)',
+          '0px -5px 0px rgba(170, 93, 54, 1)',
+          '0px 5px 0px rgba(170, 93, 54, 1)'
+        ],
+        '5xlo': [
+          '8px 0px 0px rgba(170, 93, 54, 1)',
+          '-8px 0px 0px rgba(170, 93, 54, 1)',
+          '0px -8px 0px rgba(170, 93, 54, 1)',
+          '0px 8px 0px rgba(170, 93, 54, 1)'
         ]
       },
 
       colors: {
         oren: {
-          600: "AA5D36",
+          600: "#AA5D36",
           4: '#D08159',
           3: '#FFAA5E',
           2: '#FFD4A3',
