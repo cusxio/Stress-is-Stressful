@@ -13,8 +13,23 @@ export default function SubmitYourStress() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Redirect to ContentPage with the captured input values as query parameters
-    router.push(`/content?stress=${encodeURIComponent(stressInput)}&name=${encodeURIComponent(nameInput)}`);
+    // Get existing submissions from local storage
+    const existingSubmissions = JSON.parse(localStorage.getItem('submissions') || '[]');
+
+    // Create new submission object
+    const newSubmission = {
+      stress: stressInput,
+      name: nameInput,
+    };
+
+    // Add new submission to existing submissions
+    const updatedSubmissions = [...existingSubmissions, newSubmission];
+
+    // Save updated submissions back to local storage
+    localStorage.setItem('submissions', JSON.stringify(updatedSubmissions));
+
+    // Redirect to Loading page
+    router.push('/loading'); // This page will show the loading screen for 3 seconds
   };
 
   return (

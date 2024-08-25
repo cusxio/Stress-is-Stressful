@@ -1,38 +1,35 @@
 'use client';
 
-import { Suspense } from 'react'; // Import Suspense from React
-import { useSearchParams } from 'next/navigation'; // Correct import from next/navigation
+import { useEffect, useState } from 'react';
 
-function ContentPage() {
-  const searchParams = useSearchParams(); // useSearchParams hook to access query parameters
+export default function ContentPage() {
+  const [submissions, setSubmissions] = useState<{ stress: string; name: string }[]>([]);
 
-  const stress = searchParams.get('stress');
-  const name = searchParams.get('name');
+  useEffect(() => {
+    // Fetch submissions from local storage on component mount
+    const storedSubmissions = JSON.parse(localStorage.getItem('submissions') || '[]');
+    setSubmissions(storedSubmissions);
+  }, []);
+
 
   return (
     <main className="bg-gradient-to-br from-dark-blue to-light-blue pl-[10%] pr-[10%] h-screen flex flex-col items-center justify-center">
-      <div className="bg-white p-10 rounded-lg shadow-lg w-full max-w-2xl">
+      <div className="bg-white text-black p-10 rounded-lg shadow-lg w-full max-w-2xl">
         <h1 className="text-3xl font-bold mb-4">Captured Data</h1>
-        {stress && name ? (
+        
           <ul className="space-y-4">
-            <li className="border-b border-gray-300 pb-2">
-              <p className="text-xl">Name: {name}</p>
-              <p className="text-xl">Stress: {stress}</p>
+            {submissions.map((submission, index) => (
+
+              <li key={index} className="border-b border-gray-300 pb-2">
+              <p className="text-xl">Name: {submission.name}</p>
+              <p className="text-xl">Stress: {submission.stress}</p>
             </li>
+            ))}
           </ul>
-        ) : (
-          <p className="text-xl">No submissions yet. Be the first to share what&apos;s stressing you out!</p>
-        )}
+        
       </div>
     </main>
   );
 }
 
-// Wrapping ContentPage in Suspense boundary
-export default function Page() {
-  return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <ContentPage />
-    </Suspense>
-  );
-}
+
