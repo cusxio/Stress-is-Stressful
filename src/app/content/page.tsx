@@ -1,12 +1,14 @@
 'use client';
 
+import { Suspense } from 'react'; // Import Suspense from React
 import { useSearchParams } from 'next/navigation'; // Correct import from next/navigation
 
-export default function ContentPage() {
+function ContentPage() {
   const searchParams = useSearchParams(); // useSearchParams hook to access query parameters
 
   const stress = searchParams.get('stress');
   const name = searchParams.get('name');
+
   return (
     <main className="bg-gradient-to-br from-dark-blue to-light-blue pl-[10%] pr-[10%] h-screen flex flex-col items-center justify-center">
       <div className="bg-white p-10 rounded-lg shadow-lg w-full max-w-2xl">
@@ -23,5 +25,14 @@ export default function ContentPage() {
         )}
       </div>
     </main>
+  );
+}
+
+// Wrapping ContentPage in Suspense boundary
+export default function Page() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <ContentPage />
+    </Suspense>
   );
 }
