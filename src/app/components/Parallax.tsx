@@ -143,14 +143,14 @@ function Parallax() {
                 <Image ref={mountain3} className='w-full absolute z-10 bottom-0' src={m3} alt={"mountain3"}/>
                 <Image ref={mountain2} className='w-full absolute z-20 bottom-0' src={m2} alt={"mountain2"}/>
                 <Image ref={mountain1} className='w-full absolute z-30 bottom-0' src={m1} alt={"mountain1"}/>
-                <Image ref={sun} className='w-[25%] sm:w-[20%] absolute left-[50%] md:left-[53%] bottom-[10%] sm:bottom-[20%] md:bottom-[20%] lg:bottom-[26%] xl:bottom-[33%] z-0' src={sunI} alt={"sun"}/>
-                <Image ref={cloud1} className='absolute w-[30%] sm:w-[20%] md:w-[15%] left-[60%] top-[5%] z-0' src={c1} alt={"cloud1"}/>
-                <Image ref={cloud2} className='absolute w-[30%] sm:w-[20%] md:w-[15%] left-[10%] top-[30%] md:top-[25%] z-0' src={c2}alt={"cloud2"}/>
-                <Image ref={cloud3} className='absolute w-[30%] sm:w-[20%] md:w-[15%] left-[60%] md:left-[35%] top-[15%] z-0' src={c3}alt={"cloud3"}/>
-                <Image ref={cloud4} className='absolute w-[30%] sm:w-[20%] md:w-[15%] left-[80%] top-[30%] md:top-[20%] z-0' src={c4} alt={"cloud4"}/>
-                <Image ref={cloud5} className='absolute w-[20%] sm:w-[15%] md:w-[10%] left-[52%] sm:left-[80%] md:left-[90%] bottom-[35%] md:bottom-[40%] lg:bottom-[50%] z-20' src={c5} alt={"clound5"}/>
-                <Image ref={cloud6} className='absolute w-[30%] sm:w-[20%] md:w-[15%] top-20' src={c6} alt={"cloud6"}/>
-                <div ref={copy} className="absolute flex-col left-1/2 top-1/2 md:top-[45%] z-10 items-center justify-center -translate-x-1/2 -translate-y-1/2">
+                <Image ref={sun} className='w-[25%] sm:w-[20%] absolute left-[50%] md:left-[53%] bottom-[10%] sm:bottom-[20%] md:bottom-[20%] lg:bottom-[26%] xl:bottom-[33%] z-0 2xl:bottom-[45%]' src={sunI} alt={"sun"}/>
+                <Image ref={cloud1} className='absolute w-[30%] sm:w-[20%] md:w-[15%] 2xl:w-[10%] left-[60%] top-[5%] z-0' src={c1} alt={"cloud1"}/>
+                <Image ref={cloud2} className='absolute w-[30%] sm:w-[20%] md:w-[15%] 2xl:w-[10%] left-[10%] top-[30%] md:top-[25%] z-0' src={c2}alt={"cloud2"}/>
+                <Image ref={cloud3} className='absolute w-[30%] sm:w-[20%] md:w-[15%] 2xl:w-[10%] left-[60%] md:left-[35%] top-[15%] z-0' src={c3}alt={"cloud3"}/>
+                <Image ref={cloud4} className='absolute w-[30%] sm:w-[20%] md:w-[15%] 2xl:w-[10%] left-[80%] top-[30%] md:top-[20%] z-0' src={c4} alt={"cloud4"}/>
+                <Image ref={cloud5} className='absolute w-[20%] sm:w-[15%] md:w-[10%] 2xl:w-[8%] left-[52%] sm:left-[80%] md:left-[90%] bottom-[35%] md:bottom-[40%] lg:bottom-[50%] 2xl:bottom-[60%] z-20' src={c5} alt={"clound5"}/>
+                <Image ref={cloud6} className='absolute w-[30%] sm:w-[20%] md:w-[15%] 2xl:w-[8%] top-20' src={c6} alt={"cloud6"}/>
+                <div ref={copy} className="absolute flex-col left-1/2 top-1/2 md:top-[45%] z-10 items-center justify-center -translate-x-1/2 -translate-y-1/2 2xl:z-20">
                     <h1 className="font-pressstart2p bg-gradient-to-b from-orange-200 to-orange-600 inline-block text-transparent bg-clip-text text-4xl sm:text-6xl md:text-7xl 2xl:text-9xl text-stroke z-10 drop-shadow-3xlb sm:drop-shadow-4xlb 2xl:drop-shadow-5xlb">STRESS IS</h1>
                     <h1 className="mt-2 font-pressstart2p bg-gradient-to-b from-orange-200 to-orange-600 inline-block text-transparent bg-clip-text text-4xl sm:text-6xl md:text-7xl 2xl:text-9xl text-stroke z-10 drop-shadow-3xlb sm:drop-shadow-4xlb 2xl:drop-shadow-5xlb">STRESSFUL</h1>
                 </div>

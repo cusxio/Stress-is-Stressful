@@ -1,9 +1,9 @@
-'use client'
+"use client"
 
 import Image from 'next/image';
 import room from '../../../public/room.gif';
 import { useState } from 'react';
-import { useRouter } from 'next/navigation'; // Updated to use the router for navigation
+import { useRouter } from 'next/navigation';
 
 export default function SubmitYourStress() {
   const [stressInput, setStressInput] = useState('');
@@ -13,50 +13,35 @@ export default function SubmitYourStress() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Get existing submissions from local storage
-    const existingSubmissions = JSON.parse(localStorage.getItem('submissions') || '[]');
-
-    // Create new submission object
-    const newSubmission = {
-      stress: stressInput,
-      name: nameInput,
-    };
-
-    // Add new submission to existing submissions
-    const updatedSubmissions = [...existingSubmissions, newSubmission];
-
-    // Save updated submissions back to local storage
-    localStorage.setItem('submissions', JSON.stringify(updatedSubmissions));
-
-    // Redirect to Loading page
-    router.push('/loading'); // This page will show the loading screen for 3 seconds
+    // Redirect to ContentPage with the captured input values as query parameters
+    router.push(`/content?stress=${encodeURIComponent(stressInput)}&name=${encodeURIComponent(nameInput)}`);
   };
 
   return (
-    <main className="bg-gradient-to-br from-dark-blue to-light-blue pl-[10%] pr-[10%]">
-      <div className="flex">
-        <div className="w-[50%] content-center">
-          <h1 className="mt-20 font-pressstart2p bg-gradient-to-b from-oren-1 to-oren-3 inline-block text-transparent bg-clip-text text-4xl sm:text-6xl md:text-7xl 2xl:text-7xl text-stroke z-10 drop-shadow-3xlo sm:drop-shadow-4xlo 2xl:drop-shadow-5xlo leading-relaxed">
-            What&apos;s Stressing You Out?
-          </h1>
-          <Image className="w-full" src={room} alt={""} />
-        </div>
+    <main className="bg-gradient-to-br from-dark-blue to-light-blue flex flex-col md:flex-row">
+      <div className="w-full md:w-1/2 flex flex-col items-center md:items-start p-6 pb-0 lg:p-[5%]">
+        <h1 className="mt-7 font-pressstart2p bg-gradient-to-b from-oren-1 to-oren-3 inline-block text-transparent bg-clip-text text-4xl sm:text-6xl md:text-4xl lg:text-5xl 2xl:text-7xl text-stroke z-10 drop-shadow-3xlo sm:drop-shadow-3xlo lg:drop-shadow-4xlo 2xl:drop-shadow-5xlo leading-tight lg:leading-tight">
+          What&apos;s Stressing You Out?
+        </h1>
+        <Image className="w-full content-center" src={room} alt={"a gif of a room"} />
+      </div>
 
-        <form onSubmit={handleSubmit} className="flex-col content-center p-[10%]">
+      <div className="w-full md:w-1/2 flex flex-col items-center justify-center pl-6 pr-6 pb-10 lg:p-[5%]">
+        <form onSubmit={handleSubmit} className="flex flex-col w-full">
           <input
-            className="bg-light-blue font-mono text-xs w-80 h-1/3 rounded-2xl p-5 text-wrap block"
+            className="bg-light-blue font-mono text-xs w-full h-1/3 text-white rounded-2xl p-5 text-wrap block mb-5"
             placeholder="Things that&apos;s stressing me out..."
             value={stressInput}
             onChange={(e) => setStressInput(e.target.value)}
           />
           <input
-            className="bg-light-blue font-mono text-xs w-80 h-5 rounded-2xl p-5 mt-5 block"
+            className="bg-light-blue font-mono text-xs w-full h-5 rounded-2xl p-5 mb-5"
             placeholder="Name"
             value={nameInput}
             onChange={(e) => setNameInput(e.target.value)}
           />
-          <button type="submit" className="text-orange-200 text-xs justify-center mt-5">
-            Toss It In The Trash
+          <button type="submit" className="w-full text-oren-1 text-xs content-center justify-center mt-5 bg-light-blue hover:bg-dark-blue p-4 rounded-2xl">
+            TOSS IT IN THE TRASH
           </button>
         </form>
       </div>

@@ -53,119 +53,136 @@
 
 'use client';
 
+'use client';
+
 import Image from 'next/image';
 import bin from '../../../public/bin.png';
 import paper from '../../../public/paper.png';
 import { useRef, useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation'; // Import useRouter for navigation
+import { useRouter } from 'next/navigation';
 
 function Trashcan() {
-    const [position, setPosition] = useState({ top: 0, left: 0 });
-    const [isDropped, setIsDropped] = useState(false); // State to track if trash is dropped
-    const trashRef = useRef<HTMLDivElement | null>(null);
-    const binRef = useRef<HTMLDivElement | null>(null);
-    const router = useRouter(); // Initialize the router
+  const [position, setPosition] = useState({ top: 0, left: 0 });
+  const [isDropped, setIsDropped] = useState(false);
+  const trashRef = useRef<HTMLDivElement | null>(null);
+  const binRef = useRef<HTMLDivElement | null>(null);
+  const router = useRouter();
 
-    useEffect(() => {
-        const trash = trashRef.current;
+  useEffect(() => {
+    const trash = trashRef.current;
 
-        if (!trash) return;
+    if (!trash) return;
 
-        let startX = 0;
-        let startY = 0;
+    let startX = 0;
+    let startY = 0;
 
-        const mouseDown = (e: MouseEvent) => {
-            startX = e.clientX;
-            startY = e.clientY;
+    const handleStart = (e: MouseEvent | TouchEvent) => {
+      const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX;
+      const clientY = 'touches' in e ? e.touches[0].clientY : e.clientY;
+      startX = clientX;
+      startY = clientY;
 
-            document.addEventListener('mousemove', mouseMove);
-            document.addEventListener('mouseup', mouseUp);
-        };
+      document.addEventListener('mousemove', handleMove);
+      document.addEventListener('touchmove', handleMove, { passive: false });
+      document.addEventListener('mouseup', handleEnd);
+      document.addEventListener('touchend', handleEnd);
+    };
 
-        const mouseMove = (e: MouseEvent) => {
-            const newX = startX - e.clientX;
-            const newY = startY - e.clientY;
+    const handleMove = (e: MouseEvent | TouchEvent) => {
+      e.preventDefault(); // Prevent scrolling on touch devices
 
-            startX = e.clientX;
-            startY = e.clientY;
+      const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX;
+      const clientY = 'touches' in e ? e.touches[0].clientY : e.clientY;
 
-            setPosition((prevPosition) => ({
-                top: prevPosition.top - newY,
-                left: prevPosition.left - newX,
-            }));
-        };
+      const newX = startX - clientX;
+      const newY = startY - clientY;
 
-        const mouseUp = () => {
-            document.removeEventListener('mousemove', mouseMove);
-            document.removeEventListener('mouseup', mouseUp);
+      startX = clientX;
+      startY = clientY;
 
-            // Check for collision with the bin
-            if (isTrashInBin()) {
-                setIsDropped(true);
-                router.push('/submit'); // Navigate to the /submit page
-            }
-        };
+      setPosition((prevPosition) => ({
+        top: prevPosition.top - newY,
+        left: prevPosition.left - newX,
+      }));
+    };
 
-        const isTrashInBin = () => {
-            const trash = trashRef.current;
-            const bin = binRef.current;
+    const handleEnd = () => {
+      document.removeEventListener('mousemove', handleMove);
+      document.removeEventListener('touchmove', handleMove);
+      document.removeEventListener('mouseup', handleEnd);
+      document.removeEventListener('touchend', handleEnd);
 
-            if (trash && bin) {
-                const trashRect = trash.getBoundingClientRect();
-                const binRect = bin.getBoundingClientRect();
+      if (isTrashInBin()) {
+        setIsDropped(true);
+        router.push('/submit');
+      }
+    };
 
-                return (
-                    trashRect.left < binRect.right &&
-                    trashRect.right > binRect.left &&
-                    trashRect.top < binRect.bottom &&
-                    trashRect.bottom > binRect.top
-                );
-            }
-            return false;
-        };
+    const isTrashInBin = () => {
+      const trash = trashRef.current;
+      const bin = binRef.current;
 
-        trash.addEventListener('mousedown', mouseDown);
+      if (trash && bin) {
+        const trashRect = trash.getBoundingClientRect();
+        const binRect = bin.getBoundingClientRect();
 
-        return () => {
-            trash.removeEventListener('mousedown', mouseDown);
-            document.removeEventListener('mousemove', mouseMove);
-            document.removeEventListener('mouseup', mouseUp);
-        };
-    }, [router]); // Adding router to the dependency array
+        return (
+          trashRect.left < binRect.right &&
+          trashRect.right > binRect.left &&
+          trashRect.top < binRect.bottom &&
+          trashRect.bottom > binRect.top
+        );
+      }
+      return false;
+    };
 
-    return (
+    trash.addEventListener('mousedown', handleStart);
+    trash.addEventListener('touchstart', handleStart, { passive: false });
 
-        <div className='flex pl-[10%] pr-[10%]'>
-            <div className="content-center w-1/2">
-            <h1 className="font-pressstart2p bg-gradient-to-b from-oren-1 to-oren-3 inline-block text-transparent bg-clip-text decoration-solid decoration-20 text-md xl:text-5xl text-stroke z-10 drop-shadow-3xlo text-left">ARE YOU READY TO</h1>
-            <h1 className="font-pressstart2p bg-gradient-to-b from-oren-1 to-oren-3 inline-block text-transparent bg-clip-text decoration-solid decoration-20 text-md xl:text-5xl text-stroke z-10 drop-shadow-3xlo text-left">TOSS YOUR STRESS AWAY?</h1>
-            </div>
+    return () => {
+      trash.removeEventListener('mousedown', handleStart);
+      trash.removeEventListener('touchstart', handleStart);
+      document.removeEventListener('mousemove', handleMove);
+      document.removeEventListener('touchmove', handleMove);
+      document.removeEventListener('mouseup', handleEnd);
+      document.removeEventListener('touchend', handleEnd);
+    };
+  }, [router]);
 
-            <div className="relative w-full h-screen"> {/* Container for the trash and bin */}
-                {/* Trash (Draggable Item) */}
-                {!isDropped && (
-                    <div
-                    ref={trashRef}
-                    style={{
-                        top: `${position.top}px`,
-                        left: `${position.left}px`,
-                    }}
-                    className="absolute cursor-grab w-24 h-24"
-                    >
-                        <Image className="w-full h-full" src={paper} alt="paper" />
-                    </div>
-                )}
+  return (
+    <div className="flex flex-col pl-[10%] pr-[10%] w-full lg:flex-row justify-items-center align-middle lg:items-top">
+      <div className="flex flex-col lg:w-1/2 text-center align-middle lg:text-left">
+        <h1 className="font-pressstart2p bg-gradient-to-b from-oren-1 to-oren-3 block text-transparent bg-clip-text decoration-solid decoration-20 text-lg md:text-2xl xl:text-4xl text-stroke z-10 drop-shadow-3xlo xl:leading-snug">
+          ARE YOU READY TO
+        </h1>
 
-                {/* Bin (Drop Zone) */}
-                <div
-                    ref={binRef}
-                    className="absolute bottom-12 right-12 w-24 h-24"
-                    >
-                    <Image className="w-full h-full" src={bin} alt="bin" />
-                </div>
-            </div>
+        <h1 className="font-pressstart2p bg-gradient-to-b from-oren-1 to-oren-3 block text-transparent bg-clip-text decoration-solid decoration-20 text-lg md:text-2xl xl:text-4xl text-stroke z-10 drop-shadow-3xlo leading-8 xl:leading-snug mt-1">
+          TOSS YOUR STRESS AWAY?
+        </h1>
+
+        <p className="text-white text-[8px] md:text-xs mt-2">Drag the paper ball into the bin</p>
+      </div>
+
+      <div className="relative lg:w-1/2 h-[50vh] mt-5 md:mt-10">
+        {!isDropped && (
+          <div
+            ref={trashRef}
+            style={{
+              top: `${position.top}px`,
+              left: `${position.left}px`,
+            }}
+            className="absolute cursor-grab w-12 h-12 md:w-16 md:h-16"
+          >
+            <Image className="w-full h-full" src={paper} alt="paper" />
+          </div>
+        )}
+
+        <div ref={binRef} className="absolute bottom-10 right-0 w-24 h-24">
+          <Image className="w-full h-full" src={bin} alt="bin" />
         </div>
-    );
+      </div>
+    </div>
+  );
 }
 
 export default Trashcan;
