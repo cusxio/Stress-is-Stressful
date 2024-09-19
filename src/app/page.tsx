@@ -1,8 +1,8 @@
-import Image from "next/image";
-import { inherits } from "util";
-import Link from "next/link";
+'use client';
+
 import Parallax from "./components/Parallax";
 import Trashcan from "./components/Trashcan";
+
 
 
 export default function Home() {
@@ -24,10 +24,9 @@ export default function Home() {
         </p>
       </div>
 
-      
+      <Trashcan />    
+  
 
-      <Trashcan />
-      
     </main>
   );
 }
