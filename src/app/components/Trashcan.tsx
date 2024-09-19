@@ -212,8 +212,8 @@ const Trashcan: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col pl-[10%] pr-[10%] w-full lg:flex-row justify-items-center align-middle lg:items-top">
-      <div className="flex flex-col lg:w-1/2 text-center align-middle lg:text-left">
+    <div className="flex flex-col pl-[10%] pr-[10%] w-full lg:flex-row justify-items-center align-middle lg:items-top z-50">
+      <div className="flex flex-col lg:w-1/2 text-center align-middle lg:text-left z-0">
         <h1 className="font-pressstart2p bg-gradient-to-b from-oren-1 to-oren-3 block text-transparent bg-clip-text decoration-solid decoration-20 text-lg md:text-2xl xl:text-4xl text-stroke z-10 drop-shadow-3xlo xl:leading-snug">
           ARE YOU READY TO
         </h1>
