@@ -4,32 +4,27 @@ import Image from 'next/image';
 import room from '../../../public/room.gif';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { supabase } from '../../../lib/supabaseClient';
 
 export default function SubmitYourStress() {
   const [stressInput, setStressInput] = useState('');
   const [nameInput, setNameInput] = useState('');
   const router = useRouter();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Get existing submissions from local storage
-    const existingSubmissions = JSON.parse(localStorage.getItem('submissions') || '[]');
+    // Insert data into Supabase
+    const { data, error } = await supabase
+      .from('stress_submissions')
+      .insert([{ stress: stressInput, name: nameInput }]);
 
-    // Create new submission object
-    const newSubmission = {
-      stress: stressInput,
-      name: nameInput,
-    };
-
-    // Add new submission to existing submissions
-    const updatedSubmissions = [...existingSubmissions, newSubmission];
-
-    // Save updated submissions back to local storage
-    localStorage.setItem('submissions', JSON.stringify(updatedSubmissions));
-
-    // Redirect to Loading page
-    router.push('/loading'); // This page will show the loading screen for 3 seconds
+    if (error) {
+      console.error('Error inserting data:', error);
+    } else {
+      // Redirect to Loading page
+      router.push('/loading');
+    }
   };
 
   return (

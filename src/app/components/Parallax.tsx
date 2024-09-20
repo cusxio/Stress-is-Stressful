@@ -139,7 +139,7 @@ function Parallax() {
 
     return (
         <div className="overflow-hidden h-screen relative bg-oren-4 z-0">
-            <div className=' h-[110vh] w-full relative'>
+            <div className='h-[110vh] w-full relative'>
                 <Image ref={mountain3} className='w-full absolute z-10 bottom-0' src={m3} alt={"mountain3"}/>
                 <Image ref={mountain2} className='w-full absolute z-20 bottom-0' src={m2} alt={"mountain2"}/>
                 <Image ref={mountain1} className='w-full absolute z-30 bottom-0' src={m1} alt={"mountain1"}/>
