@@ -32,7 +32,7 @@ export default function Loading() {
 
           </div>
 
-          <h3 className="text-xs lg:text-sm 2xl:text-2xl text-center text-orange-200">We&apos;re tossing the stress out for you...</h3>
+          <h3 className="m-5 text-xs lg:text-sm 2xl:text-2xl text-center text-orange-200">We&apos;re tossing the stress out for you...</h3>
         
       </div>
       

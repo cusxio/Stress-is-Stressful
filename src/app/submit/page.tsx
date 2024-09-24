@@ -39,13 +39,13 @@ export default function SubmitYourStress() {
       <div className="w-full md:w-1/2 flex flex-col items-center justify-center pl-6 pr-6 pb-10 lg:p-[5%]">
         <form onSubmit={handleSubmit} className="flex flex-col w-full">
           <input
-            className="bg-light-blue font-mono text-xs w-full h-1/3 text-white rounded-2xl p-5 text-wrap block mb-5"
+            className="bg-light-blue font-mono text-xs w-full h-1/3 text-oren-1 rounded-2xl p-5 text-wrap block mb-5"
             placeholder="Things that&apos;s stressing me out..."
             value={stressInput}
             onChange={(e) => setStressInput(e.target.value)}
           />
           <input
-            className="bg-light-blue font-mono text-xs w-full h-5 rounded-2xl p-5 mb-5"
+            className="bg-light-blue font-mono text-xs w-full h-5 rounded-2xl p-5 mb-5 text-oren-1"
             placeholder="Name"
             value={nameInput}
             onChange={(e) => setNameInput(e.target.value)}

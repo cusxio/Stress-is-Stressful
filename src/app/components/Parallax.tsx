@@ -142,8 +142,8 @@ function Parallax() {
             <div className='h-[110vh] w-full relative'>
                 <Image ref={mountain3} className='w-full absolute z-10 bottom-0' src={m3} alt={"mountain3"}/>
                 <Image ref={mountain2} className='w-full absolute z-20 bottom-0' src={m2} alt={"mountain2"}/>
-                <Image ref={mountain1} className='w-full absolute z-30 bottom-0' src={m1} alt={"mountain1"}/>
-                <Image ref={sun} className='w-[25%] sm:w-[20%] absolute left-[50%] md:left-[53%] bottom-[10%] sm:bottom-[20%] md:bottom-[20%] lg:bottom-[26%] xl:bottom-[33%] z-0 2xl:bottom-[45%]' src={sunI} alt={"sun"}/>
+                <Image ref={mountain1} className='w-full absolute z-30 bottom-10 sm:bottom-10' src={m1} alt={"mountain1"}/>
+                <Image ref={sun} className='w-[25%] sm:w-[20%] absolute left-[50%] md:left-[53%] bottom-[15%] sm:bottom-[20%] md:bottom-[20%] lg:bottom-[26%] xl:bottom-[33%] z-0 2xl:bottom-[45%]' src={sunI} alt={"sun"}/>
                 <Image ref={cloud1} className='absolute w-[30%] sm:w-[20%] md:w-[15%] 2xl:w-[10%] left-[60%] top-[5%] z-0' src={c1} alt={"cloud1"}/>
                 <Image ref={cloud2} className='absolute w-[30%] sm:w-[20%] md:w-[15%] 2xl:w-[10%] left-[10%] top-[30%] md:top-[25%] z-0' src={c2}alt={"cloud2"}/>
                 <Image ref={cloud3} className='absolute w-[30%] sm:w-[20%] md:w-[15%] 2xl:w-[10%] left-[60%] md:left-[35%] top-[15%] z-0' src={c3}alt={"cloud3"}/>
