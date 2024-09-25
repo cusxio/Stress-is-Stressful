@@ -26,8 +26,15 @@ body {
     rgb(var(--background-start-rgb));
 }
 
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+}
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
   }
 }
