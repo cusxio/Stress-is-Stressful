@@ -13,7 +13,7 @@ export default function Home() {
       <Parallax />         
 
       <div className="p-[10%]">
-        <p className=" text-oren-4 text-xs leading-5 ">
+        <p className=" text-oren-4 text-xs leading-5 lg:w-[70%] m-auto">
         Have you ever done something bad or really stupid? Like, you know, stealing money from your granny as a child or laughing at an odd-looking homeless person?
         <br/><br/>
         Do you still remember the day when you failed the interview for your dream job or the night when you were too shy to tell her that you loved her? Maybe you hate yourself for some of your thoughts or feelings?

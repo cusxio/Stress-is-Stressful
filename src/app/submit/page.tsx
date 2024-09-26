@@ -2,17 +2,40 @@
 
 import Image from 'next/image';
 import room from '../../../public/room.gif';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { supabase } from '../../../lib/supabaseClient';
 import { Switch } from '@/components/ui/switch';
 import { Label } from "@/components/ui/label"
+import { HelpCircle } from 'lucide-react';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 export default function SubmitYourStress() {
   const [stressInput, setStressInput] = useState('');
   const [nameInput, setNameInput] = useState('');
   const [isAnonymous, setIsAnonymous] = useState(false);
   const router = useRouter();
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
+
+  useEffect(() => {
+    if (isAnonymous) {
+      setNameInput('Anonymous');
+    } else {
+      setNameInput('');
+    }
+  }, [isAnonymous]);
+
+  useEffect(() => {
+    if (textareaRef.current) {
+      textareaRef.current.style.height = 'auto';
+      textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
+    }
+  }, [stressInput]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -43,20 +66,35 @@ export default function SubmitYourStress() {
 
       <div className="w-full md:w-1/2 flex flex-col items-center justify-center pl-6 pr-6 pb-10 lg:p-[5%]">
         <form onSubmit={handleSubmit} className="flex flex-col w-full">
+        <textarea
+          ref={textareaRef}
+          className="bg-light-blue font-mono text-xs w-full min-h-[128px] max-h-[256px] text-oren-1 rounded-2xl p-5 text-wrap block resize-none overflow-y-auto"
+          placeholder="Things that's stressing me out..."
+          value={stressInput}
+          onChange={(e) => setStressInput(e.target.value)}
+        />
           <input
-            className="bg-light-blue font-mono text-xs w-full h-full text-oren-1 rounded-2xl p-5 text-wrap block mb-5"
-            placeholder="Things that&apos;s stressing me out..."
-            value={stressInput}
-            onChange={(e) => setStressInput(e.target.value)}
-          />
-          <input
-            className="bg-light-blue font-mono text-xs w-full h-5 rounded-2xl p-5 mb-5 text-oren-1"
-            placeholder="Name"
+            className={isAnonymous? "hidden" : "bg-light-blue font-mono text-xs w-full h-5 rounded-2xl p-5 mt-2 text-oren-1"}
+            placeholder='Name'
             value={nameInput}
             onChange={(e) => setNameInput(e.target.value)}
+            disabled={isAnonymous}
           />
-          <div className="flex items-center mb-5">
-            <Label htmlFor="Anonymous" className='text-oren-1 text-xs'>Anonymous</Label>
+          <div className="flex items-center mt-5">
+          <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <div className="p-1 cursor-help">
+                      <HelpCircle size={24} className="text-oren-1" />
+                    </div>
+                  </TooltipTrigger>
+                  <TooltipContent className='text-[8px]'>
+                    <p>Your name won't be recorded in our book.</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+
+            <Label htmlFor="Anonymous" className='text-oren-1 text-xs ml-2'>Anonymous</Label>
             <Switch
               checked={isAnonymous}
               onCheckedChange={setIsAnonymous}    

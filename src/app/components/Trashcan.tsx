@@ -1,181 +1,3 @@
-
-// // import { useRef, useEffect, useState } from 'react';
-// // import { useRouter } from 'next/navigation';
-
-// //   useEffect(() => {
-// //     const trash = trashRef.current;
-
-// //     if (!trash) return;
-
-// //     let startX = 0;
-// //     let startY = 0;
-
-// //     const handleStart = (e: MouseEvent | TouchEvent) => {
-// //       const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX;
-// //       const clientY = 'touches' in e ? e.touches[0].clientY : e.clientY;
-// //       startX = clientX;
-// //       startY = clientY;
-
-// //       document.addEventListener('mousemove', handleMove);
-// //       document.addEventListener('touchmove', handleMove, { passive: false });
-// //       document.addEventListener('mouseup', handleEnd);
-// //       document.addEventListener('touchend', handleEnd);
-// //     };
-
-// //     const handleMove = (e: MouseEvent | TouchEvent) => {
-// //       e.preventDefault(); // Prevent scrolling on touch devices
-
-// //       const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX;
-// //       const clientY = 'touches' in e ? e.touches[0].clientY : e.clientY;
-
-// //       const newX = startX - clientX;
-// //       const newY = startY - clientY;
-
-// //       startX = clientX;
-// //       startY = clientY;
-
-// //       setPosition((prevPosition) => ({
-// //         top: prevPosition.top - newY,
-// //         left: prevPosition.left - newX,
-// //       }));
-// //     };
-
-// //     const handleEnd = () => {
-// //       document.removeEventListener('mousemove', handleMove);
-// //       document.removeEventListener('touchmove', handleMove);
-// //       document.removeEventListener('mouseup', handleEnd);
-// //       document.removeEventListener('touchend', handleEnd);
-
-// //       if (isTrashInBin()) {
-// //         setIsDropped(true);
-// //         router.push('/submit');
-// //       }
-// //     };
-
-// //     const isTrashInBin = () => {
-// //       const trash = trashRef.current;
-// //       const bin = binRef.current;
-
-// //       if (trash && bin) {
-// //         const trashRect = trash.getBoundingClientRect();
-// //         const binRect = bin.getBoundingClientRect();
-
-// //         return (
-// //           trashRect.left < binRect.right &&
-// //           trashRect.right > binRect.left &&
-// //           trashRect.top < binRect.bottom &&
-// //           trashRect.bottom > binRect.top
-// //         );
-// //       }
-// //       return false;
-// //     };
-
-// //     trash.addEventListener('mousedown', handleStart);
-// //     trash.addEventListener('touchstart', handleStart, { passive: false });
-
-// //     return () => {
-// //       trash.removeEventListener('mousedown', handleStart);
-// //       trash.removeEventListener('touchstart', handleStart);
-// //       document.removeEventListener('mousemove', handleMove);
-// //       document.removeEventListener('touchmove', handleMove);
-// //       document.removeEventListener('mouseup', handleEnd);
-// //       document.removeEventListener('touchend', handleEnd);
-// //     };
-// //   }, [router]);
-
-// //   return (
-// //     <div className="flex flex-col pl-[10%] pr-[10%] w-full lg:flex-row justify-items-center align-middle lg:items-top">
-// //       <div className="flex flex-col lg:w-1/2 text-center align-middle lg:text-left">
-// //         <h1 className="font-pressstart2p bg-gradient-to-b from-oren-1 to-oren-3 block text-transparent bg-clip-text decoration-solid decoration-20 text-lg md:text-2xl xl:text-4xl text-stroke z-10 drop-shadow-3xlo xl:leading-snug">
-// //           ARE YOU READY TO
-// //         </h1>
-
-// //         <h1 className="font-pressstart2p bg-gradient-to-b from-oren-1 to-oren-3 block text-transparent bg-clip-text decoration-solid decoration-20 text-lg md:text-2xl xl:text-4xl text-stroke z-10 drop-shadow-3xlo leading-8 xl:leading-snug mt-1">
-// //           TOSS YOUR STRESS AWAY?
-// //         </h1>
-
-// //         <p className="text-white text-[8px] md:text-xs mt-2">Drag the paper ball into the bin</p>
-// //       </div>
-
-// //       <div className="relative lg:w-1/2 h-[50vh] mt-5 md:mt-10">
-// //         {!isDropped && (
-// //           <div
-// //             ref={trashRef}
-// //             style={{
-// //               top: `${position.top}px`,
-// //               left: `${position.left}px`,
-// //             }}
-// //             className="absolute cursor-grab w-12 h-12 md:w-16 md:h-16"
-// //           >
-// //             <Image className="w-full h-full" src={paper} alt="paper" />
-// //           </div>
-// //         )}
-
-// //         <div ref={binRef} className="absolute bottom-10 right-0 w-24 h-24">
-// //           <Image className="w-full h-full" src={bin} alt="bin" />
-// //         </div>
-// //       </div>
-// //     </div>
-// //   );
-// // }
-
-// // export default Trashcan;
-
-// 'use client';
-
-// import React from "react";
-// import Draggable from "react-draggable";
-// import Image from 'next/image';
-// import bin from '../../../public/bin.png';
-// import paper from '../../../public/paper.png';
-
-// class Trashcan extends React.Component {
-//   render() {
-//     return (
-
-//       <div className="flex flex-col pl-[10%] pr-[10%] w-full lg:flex-row justify-items-center align-middle lg:items-top">
-//             <div className="flex flex-col lg:w-1/2 text-center align-middle lg:text-left">
-//               <h1 className="font-pressstart2p bg-gradient-to-b from-oren-1 to-oren-3 block text-transparent bg-clip-text decoration-solid decoration-20 text-lg md:text-2xl xl:text-4xl text-stroke z-10 drop-shadow-3xlo xl:leading-snug">
-//                 ARE YOU READY TO
-//               </h1>
-      
-//               <h1 className="font-pressstart2p bg-gradient-to-b from-oren-1 to-oren-3 block text-transparent bg-clip-text decoration-solid decoration-20 text-lg md:text-2xl xl:text-4xl text-stroke z-10 drop-shadow-3xlo leading-8 xl:leading-snug mt-1">
-//                 TOSS YOUR STRESS AWAY?
-//              </h1>
-      
-//              <p className="text-white text-[8px] md:text-xs mt-2">Drag the paper ball into the bin</p>
-//            </div>
-      
-//            <div className="relative lg:w-1/2 h-[50vh] mt-5 md:mt-10">
-             
-//               <Draggable
-//                   axis="both"
-//                   handle=".handle"
-//                   defaultPosition={{ x: 0, y: 0 }}
-//                   scale={1}
-//                   onStart={this.handleStart}
-//                   onDrag={this.handleDrag}
-//                   onStop={this.handleStop}
-//                 >
-//                   <div className="handle w-12 h-12 md:w-16 md:h-16 z-50">
-//                     <Image className="w-full h-full" src={paper} alt="paper" draggable={false}/>
-//                   </div>
-                
-//                 </Draggable>
-//             </div>  
-              
-      
-//               <div className="bottom-10 right-0 w-24 h-24">
-//                 <Image className="w-full h-full" src={bin} alt="bin" />
-//               </div>
-//             </div>
-      
-//     );
-//   }
-// }
-
-// export default Trashcan;
-
 'use client';
 
 import React, { useState, useRef } from "react";
@@ -184,6 +6,7 @@ import Draggable from "react-draggable";
 import Image from 'next/image';
 import bin from '../../../public/bin.png';
 import paper from '../../../public/paper.png';
+import arrow from '../../../public/Arrow 1.png';
 
 const Trashcan: React.FC = () => {
   const router = useRouter(); // Next.js router
@@ -212,36 +35,44 @@ const Trashcan: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col pl-[10%] pr-[10%] w-full lg:flex-row justify-items-center align-middle lg:items-top z-50">
-      <div className="flex flex-col lg:w-1/2 text-center align-middle lg:text-left z-0">
+    <div className="pl-[10%] pr-[10%] w-full align-middle lg:items-top z-50">
+      <div className=" text-center lg:text-center z-0 m-auto">
         <h1 className="font-pressstart2p bg-gradient-to-b from-oren-1 to-oren-3 block text-transparent bg-clip-text decoration-solid decoration-20 text-lg md:text-2xl xl:text-4xl text-stroke z-10 drop-shadow-3xlo xl:leading-snug">
-          ARE YOU READY
+          ARE YOU READY TO
         </h1>
         <h1 className="font-pressstart2p bg-gradient-to-b from-oren-1 to-oren-3 block text-transparent bg-clip-text decoration-solid decoration-20 text-lg md:text-2xl xl:text-4xl text-stroke z-10 drop-shadow-3xlo leading-8 xl:leading-snug mt-1">
-          TO TOSS YOUR STRESS AWAY?
+          TOSS YOUR STRESS AWAY?
         </h1>
-        <p className="text-white text-[8px] md:text-xs mt-2">Drag the paper ball into the bin</p>
       </div>
 
-      <div className="relative lg:w-1/2 h-[50vh] mt-5 md:mt-10">
-        <Draggable
-          axis="both"
-          handle=".handle"
-          defaultPosition={{ x: 0, y: 0 }}
-          scale={1}
-          onStop={handleStop} // Call handleStop when dragging stops
-        >
-          <div ref={paperRef} className="handle w-12 h-12 md:w-16 md:h-16 z-50">
-            <Image className="w-full h-full" src={paper} alt="paper" draggable={false} />
+      <div className="relative lg:w-1/2 h-[50vh] mt-10 sm:mt-20 m-auto">
+        <div className="flex align-top">
+          <h1 className="inline-block text-[8px] text-white">Drag the paper</h1>
+          <Image className="inline-block mt-[5%] -ml-[5%] md:-ml-[2%] md:mt-[3%] w-auto h-10 " src={arrow} alt="arrow"/>
+        </div>
+        <div>
+          <Draggable
+            axis="both"
+            handle=".handle"
+            defaultPosition={{ x: 0, y: 0 }}
+            scale={1}
+            onStop={handleStop} // Call handleStop when dragging stops
+            >
+          <div ref={paperRef} className="handle z-50 -mt-5 ml-5">
+            <Image className="w-12 h-12 md:w-16 md:h-16 z-50" src={paper} alt="paper" draggable={false} />
           </div>
         </Draggable>
+        </div>
 
           {/* Bin image */}
-          <div ref={binRef} className="absolute bottom-20 right-20 w-24 h-24">
-            <Image className="w-full h-full" src={bin} alt="bin" />
+          <div ref={binRef} className="flex-row content-end absolute bottom-10 right-0 h-auto z-0 pr-0">
+            <h1 className="text-[8px] text-white mb-3">Into the bin</h1>
+            <Image className="w-16 xl:w-20 h-full m-auto z-0" src={bin} alt="bin" />
+            
           </div>
         </div>
       </div>
+    
   );
 };
 
