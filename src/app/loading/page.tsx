@@ -9,11 +9,38 @@ export default function Loading() {
   const router = useRouter();
 
   useEffect(() => {
+    // Function to reset zoom and scroll position
+    const resetViewport = () => {
+      // Reset zoom level
+      document.body.style.zoom = '100%';
+      // For browsers that don't support zoom
+      document.body.style.transform = 'scale(1)';
+      document.body.style.transformOrigin = '0 0';
+      
+      // Scroll to top
+      window.scrollTo(0, 0);
+      
+      // Attempt to fit content to viewport
+      document.documentElement.style.height = '100%';
+      document.body.style.height = '100%';
+      document.body.style.overflow = 'hidden';
+    };
+
+    // Call resetViewport when component mounts
+    resetViewport();
+
+    // Set up the redirect timer
     const timer = setTimeout(() => {
       router.push('/content'); // Redirect to the content page after 3 seconds
     }, 3000);
 
-    return () => clearTimeout(timer); // Cleanup the timer if the component unmounts
+    // Cleanup function
+    return () => {
+      clearTimeout(timer);
+      // Reset body styles when component unmounts
+      document.body.style.height = '';
+      document.body.style.overflow = '';
+    };
   }, [router]);
 
   return (
