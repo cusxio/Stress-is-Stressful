@@ -89,7 +89,7 @@ export default function SubmitYourStress() {
                     </div>
                   </TooltipTrigger>
                   <TooltipContent className='text-[8px]'>
-                    <p>Your name won't be recorded in our book.</p>
+                    <p>Your name won&apos;t be recorded in our book.</p>
                   </TooltipContent>
                 </Tooltip>
               </TooltipProvider>
