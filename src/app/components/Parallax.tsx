@@ -16,7 +16,7 @@ import m3 from '../../../public/sunset/mountain-3.png'
 import sunI from '../../../public/sunset/sun.png'
 
 function Parallax() {
-  const [background, setBackground] = useState(20)
+  const [, setBackground] = useState(20)
 
   const parallaxRef = useRef(null)
   const mountain3 = useRef(null)
@@ -30,7 +30,7 @@ function Parallax() {
   const cloud6 = useRef(null)
   const sun = useRef(null)
   const copy = useRef(null)
-  const btn = useRef(null)
+  // const btn = useRef(null)
 
   useEffect(() => {
     const ctx = gsap.context(() => {

@@ -1,15 +1,11 @@
 import type { Metadata } from 'next'
-import { Inter, Montserrat, Press_Start_2P } from 'next/font/google'
+import { Press_Start_2P } from 'next/font/google'
 import './globals.css'
 
 const pressstart2p = Press_Start_2P({
   subsets: ['latin'],
   weight: '400',
 })
-
-const montserrat = Montserrat({ subsets: ['latin'] })
-
-const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Strictly Students',

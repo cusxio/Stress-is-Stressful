@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import { useRouter } from 'next/navigation' // For page navigation in Next.js
-import React, { useRef, useState } from 'react'
+import React, { useRef } from 'react'
 import Draggable from 'react-draggable'
 import arrow from '../../../public/Arrow 1.png'
 import bin from '../../../public/bin.png'
@@ -12,7 +12,7 @@ const Trashcan: React.FC = () => {
   const router = useRouter() // Next.js router
   const binRef = useRef<HTMLDivElement>(null) // Reference to the bin
   const paperRef = useRef<HTMLDivElement>(null) // Reference to the paper
-  const [dragged, setDragged] = useState(false)
+  // const [dragged, setDragged] = useState(false)
 
   const handleStop = () => {
     // Get bounding boxes for paper and bin

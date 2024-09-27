@@ -38,7 +38,9 @@ export default function ClientSideContent({
       })
 
     return () => {
-      supabase.removeChannel(channel)
+      supabase.removeChannel(channel).catch((error: unknown) => {
+        console.error(error)
+      })
     }
   }, [supabase])
 

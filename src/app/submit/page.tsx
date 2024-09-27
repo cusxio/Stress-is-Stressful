@@ -8,11 +8,11 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from '@/components/ui/tooltip'
+import { supabase } from '@/lib/supabaseClient'
 import { HelpCircle } from 'lucide-react'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
-import { supabase } from '../../../lib/supabaseClient'
 import room from '../../../public/room.gif'
 
 export default function SubmitYourStress() {
@@ -33,7 +33,7 @@ export default function SubmitYourStress() {
   useEffect(() => {
     if (textareaRef.current) {
       textareaRef.current.style.height = 'auto'
-      textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`
+      textareaRef.current.style.height = `${textareaRef.current.scrollHeight.toString()}px`
     }
   }, [stressInput])
 
@@ -43,7 +43,7 @@ export default function SubmitYourStress() {
     const submittedName = isAnonymous ? 'Anonymous' : nameInput
 
     // Insert data into Supabase
-    const { data, error } = await supabase
+    const { error } = await supabase
       .from('stress_submissions')
       .insert([{ stress: stressInput, name: submittedName }])
 
@@ -69,7 +69,7 @@ export default function SubmitYourStress() {
       </div>
 
       <div className="flex w-full flex-col items-center justify-center pb-10 pl-6 pr-6 md:w-1/2 lg:p-[5%]">
-        <form onSubmit={handleSubmit} className="flex w-full flex-col">
+        <form onSubmit={void handleSubmit} className="flex w-full flex-col">
           <textarea
             ref={textareaRef}
             className="block max-h-[256px] min-h-[128px] w-full resize-none overflow-y-auto text-wrap rounded-2xl bg-light-blue p-5 font-mono text-xs text-oren-1"

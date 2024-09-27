@@ -1,4 +1,3 @@
-import { inherits } from 'util'
 import Image from 'next/image'
 import Parallax from './components/Parallax'
 
